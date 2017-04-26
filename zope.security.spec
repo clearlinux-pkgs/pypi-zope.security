@@ -5,15 +5,29 @@
 # Source0 file verified with key 0xF2A968348913D1D8 (tseaver@palladion.com)
 #
 Name     : zope.security
-Version  : 4.0.3
-Release  : 1
-URL      : https://pypi.python.org/packages/fa/48/d4d207f993359fdc8bbeda17f71f882de9d0a1974dfff423c0bda7f615f1/zope.security-4.0.3.tar.gz
-Source0  : https://pypi.python.org/packages/fa/48/d4d207f993359fdc8bbeda17f71f882de9d0a1974dfff423c0bda7f615f1/zope.security-4.0.3.tar.gz
-Source99 : https://pypi.python.org/packages/fa/48/d4d207f993359fdc8bbeda17f71f882de9d0a1974dfff423c0bda7f615f1/zope.security-4.0.3.tar.gz.asc
+Version  : 4.1.0
+Release  : 2
+URL      : https://pypi.debian.net/zope.security/zope.security-4.1.0.tar.gz
+Source0  : https://pypi.debian.net/zope.security/zope.security-4.1.0.tar.gz
+Source99 : https://pypi.debian.net/zope.security/zope.security-4.1.0.tar.gz.asc
 Summary  : Zope Security Framework
 Group    : Development/Tools
 License  : ZPL-2.1
 Requires: zope.security-python
+Requires: Sphinx
+Requires: coverage
+Requires: nose
+Requires: pytz
+Requires: setuptools
+Requires: zope.component
+Requires: zope.configuration
+Requires: zope.i18nmessageid
+Requires: zope.interface
+Requires: zope.location
+Requires: zope.proxy
+Requires: zope.schema
+Requires: zope.testing
+Requires: zope.testrunner
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : python-dev
@@ -28,7 +42,7 @@ BuildRequires : zope.schema
 %description
 ``zope.security``
 =================
-.. image:: https://pypip.in/version/zope.security/badge.svg?style=flat
+.. image:: https://img.shields.io/pypi/v/zope.security.svg
 :target: https://pypi.python.org/pypi/zope.security/
 :alt: Latest Version
 
@@ -41,11 +55,14 @@ python components for the zope.security package.
 
 
 %prep
-%setup -q -n zope.security-4.0.3
+%setup -q -n zope.security-4.1.0
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1485888949
+export SOURCE_DATE_EPOCH=1493208403
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -55,14 +72,18 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check || :
 %install
-export SOURCE_DATE_EPOCH=1485888949
+export SOURCE_DATE_EPOCH=1493208403
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+echo ----[ mark ]----
+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
 
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python*/*
+/usr/lib/python2*/*
+/usr/lib/python3*/*
