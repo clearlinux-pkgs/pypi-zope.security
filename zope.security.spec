@@ -4,7 +4,7 @@
 #
 Name     : zope.security
 Version  : 4.2.1
-Release  : 6
+Release  : 7
 URL      : https://pypi.debian.net/zope.security/zope.security-4.2.1.tar.gz
 Source0  : https://pypi.debian.net/zope.security/zope.security-4.2.1.tar.gz
 Summary  : Zope Security Framework
