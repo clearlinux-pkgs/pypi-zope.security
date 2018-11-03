@@ -4,27 +4,22 @@
 #
 Name     : zope.security
 Version  : 4.3.0
-Release  : 20
+Release  : 21
 URL      : https://files.pythonhosted.org/packages/6b/8a/6e5ab725cebd3b1db870c9745516873c2002f944e1e2bd275156ac92ac75/zope.security-4.3.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/6b/8a/6e5ab725cebd3b1db870c9745516873c2002f944e1e2bd275156ac92ac75/zope.security-4.3.0.tar.gz
 Summary  : Zope Security Framework
 Group    : Development/Tools
 License  : ZPL-2.1
-Requires: zope.security-python3
-Requires: zope.security-license
-Requires: zope.security-python
-Requires: Sphinx
-Requires: pytz
+Requires: zope.security-license = %{version}-%{release}
+Requires: zope.security-python = %{version}-%{release}
+Requires: zope.security-python3 = %{version}-%{release}
 Requires: setuptools
 Requires: zope.component
-Requires: zope.configuration
 Requires: zope.i18nmessageid
 Requires: zope.interface
 Requires: zope.location
 Requires: zope.proxy
 Requires: zope.schema
-Requires: zope.testing
-Requires: zope.testrunner
 BuildRequires : buildreq-distutils3
 BuildRequires : setuptools
 BuildRequires : zope.i18nmessageid
@@ -48,7 +43,7 @@ license components for the zope.security package.
 %package python
 Summary: python components for the zope.security package.
 Group: Default
-Requires: zope.security-python3
+Requires: zope.security-python3 = %{version}-%{release}
 
 %description python
 python components for the zope.security package.
@@ -71,8 +66,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536129585
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1541281801
+python3 setup.py build
 
 %check
 export http_proxy=http://127.0.0.1:9/
@@ -81,9 +76,9 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check || :
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/zope.security
-cp LICENSE.txt %{buildroot}/usr/share/doc/zope.security/LICENSE.txt
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/zope.security
+cp LICENSE.txt %{buildroot}/usr/share/package-licenses/zope.security/LICENSE.txt
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -92,8 +87,8 @@ echo ----[ mark ]----
 %defattr(-,root,root,-)
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/zope.security/LICENSE.txt
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/zope.security/LICENSE.txt
 
 %files python
 %defattr(-,root,root,-)
