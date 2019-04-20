@@ -4,7 +4,7 @@
 #
 Name     : zope.security
 Version  : 4.3.1
-Release  : 23
+Release  : 24
 URL      : https://files.pythonhosted.org/packages/51/8e/e3406c7ecdf0e07d4122007e9984a83d1af2aa203b87f757d0f7c535245e/zope.security-4.3.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/51/8e/e3406c7ecdf0e07d4122007e9984a83d1af2aa203b87f757d0f7c535245e/zope.security-4.3.1.tar.gz
 Summary  : Zope Security Framework
