@@ -1,5 +1,5 @@
 PKG_NAME := zope.security
-URL = https://files.pythonhosted.org/packages/51/8e/e3406c7ecdf0e07d4122007e9984a83d1af2aa203b87f757d0f7c535245e/zope.security-4.3.1.tar.gz
+URL = https://files.pythonhosted.org/packages/be/5d/1b876534ea644e5008b26c22fb0579a042b6d83d55f8b43056a500bdccbc/zope.security-5.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
