@@ -4,7 +4,7 @@
 #
 Name     : zope.security
 Version  : 5.1.1
-Release  : 45
+Release  : 46
 URL      : https://files.pythonhosted.org/packages/5c/67/73fbf688b3b0a9b33ece0622b06065ee3bea70acebf8e15fa08d9a8f06de/zope.security-5.1.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/5c/67/73fbf688b3b0a9b33ece0622b06065ee3bea70acebf8e15fa08d9a8f06de/zope.security-5.1.1.tar.gz
 Summary  : Zope Security Framework
@@ -30,12 +30,8 @@ BuildRequires : zope.proxy
 BuildRequires : zope.schema
 
 %description
-===============
 zope.security
-===============
-.. image:: https://img.shields.io/pypi/v/zope.security.svg
-:target: https://pypi.python.org/pypi/zope.security/
-:alt: Latest release
+        ===============
 
 %package license
 Summary: license components for the zope.security package.
@@ -80,12 +76,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1585000772
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1637097181
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
