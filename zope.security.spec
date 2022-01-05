@@ -4,7 +4,7 @@
 #
 Name     : zope.security
 Version  : 5.1.1
-Release  : 47
+Release  : 48
 URL      : https://files.pythonhosted.org/packages/5c/67/73fbf688b3b0a9b33ece0622b06065ee3bea70acebf8e15fa08d9a8f06de/zope.security-5.1.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/5c/67/73fbf688b3b0a9b33ece0622b06065ee3bea70acebf8e15fa08d9a8f06de/zope.security-5.1.1.tar.gz
 Summary  : Zope Security Framework
@@ -13,21 +13,14 @@ License  : ZPL-2.1
 Requires: zope.security-license = %{version}-%{release}
 Requires: zope.security-python = %{version}-%{release}
 Requires: zope.security-python3 = %{version}-%{release}
-Requires: setuptools
-Requires: zope.component
-Requires: zope.i18nmessageid
-Requires: zope.interface
-Requires: zope.location
-Requires: zope.proxy
-Requires: zope.schema
 BuildRequires : buildreq-distutils3
-BuildRequires : setuptools
-BuildRequires : zope.component
-BuildRequires : zope.i18nmessageid
-BuildRequires : zope.interface
-BuildRequires : zope.location
-BuildRequires : zope.proxy
-BuildRequires : zope.schema
+BuildRequires : pypi(setuptools)
+BuildRequires : pypi(zope.component)
+BuildRequires : pypi(zope.i18nmessageid)
+BuildRequires : pypi(zope.interface)
+BuildRequires : pypi(zope.location)
+BuildRequires : pypi(zope.proxy)
+BuildRequires : pypi(zope.schema)
 
 %description
 zope.security
@@ -76,7 +69,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1637097181
+export SOURCE_DATE_EPOCH=1641415143
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
