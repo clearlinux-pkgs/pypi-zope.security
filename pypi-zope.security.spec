@@ -4,12 +4,14 @@
 #
 Name     : pypi-zope.security
 Version  : 5.3
-Release  : 52
+Release  : 53
 URL      : https://files.pythonhosted.org/packages/99/f4/064627c3906139f13296e4221e0867f69f0e69ad144927bfe611b0e024a0/zope.security-5.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/99/f4/064627c3906139f13296e4221e0867f69f0e69ad144927bfe611b0e024a0/zope.security-5.3.tar.gz
 Summary  : Zope Security Framework
 Group    : Development/Tools
 License  : ZPL-2.1
+Requires: pypi-zope.security-filemap = %{version}-%{release}
+Requires: pypi-zope.security-lib = %{version}-%{release}
 Requires: pypi-zope.security-license = %{version}-%{release}
 Requires: pypi-zope.security-python = %{version}-%{release}
 Requires: pypi-zope.security-python3 = %{version}-%{release}
@@ -29,6 +31,24 @@ zope.security
 .. image:: https://img.shields.io/pypi/v/zope.security.svg
 :target: https://pypi.python.org/pypi/zope.security/
 :alt: Latest release
+
+%package filemap
+Summary: filemap components for the pypi-zope.security package.
+Group: Default
+
+%description filemap
+filemap components for the pypi-zope.security package.
+
+
+%package lib
+Summary: lib components for the pypi-zope.security package.
+Group: Libraries
+Requires: pypi-zope.security-license = %{version}-%{release}
+Requires: pypi-zope.security-filemap = %{version}-%{release}
+
+%description lib
+lib components for the pypi-zope.security package.
+
 
 %package license
 Summary: license components for the pypi-zope.security package.
@@ -50,6 +70,7 @@ python components for the pypi-zope.security package.
 %package python3
 Summary: python3 components for the pypi-zope.security package.
 Group: Default
+Requires: pypi-zope.security-filemap = %{version}-%{release}
 Requires: python3-core
 Provides: pypi(zope.security)
 Requires: pypi(setuptools)
@@ -67,13 +88,16 @@ python3 components for the pypi-zope.security package.
 %prep
 %setup -q -n zope.security-5.3
 cd %{_builddir}/zope.security-5.3
+pushd ..
+cp -a zope.security-5.3 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1651080162
+export SOURCE_DATE_EPOCH=1653003213
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -87,6 +111,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check || :
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
+python3 setup.py build
+
+popd
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
@@ -96,9 +129,26 @@ python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
+python3 -tt setup.py build install --root=%{buildroot}-v3
+popd
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
+
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-pypi-zope.security
+
+%files lib
+%defattr(-,root,root,-)
+/usr/share/clear/optimized-elf/other*
 
 %files license
 %defattr(0644,root,root,0755)
