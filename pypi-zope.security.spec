@@ -4,7 +4,7 @@
 #
 Name     : pypi-zope.security
 Version  : 5.4
-Release  : 62
+Release  : 63
 URL      : https://files.pythonhosted.org/packages/b6/fb/65f1b37ef5ad66871b86d7a4aab6f51efd6e56ac09dda34c97b007b00928/zope.security-5.4.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b6/fb/65f1b37ef5ad66871b86d7a4aab6f51efd6e56ac09dda34c97b007b00928/zope.security-5.4.tar.gz
 Summary  : Zope Security Framework
@@ -97,7 +97,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1663257471
+export SOURCE_DATE_EPOCH=1666725997
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
