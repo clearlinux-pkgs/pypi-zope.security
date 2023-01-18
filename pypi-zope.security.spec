@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xC1B74D5998A5F657 (jens@plyp.com)
 #
 Name     : pypi-zope.security
-Version  : 6.0
-Release  : 69
-URL      : https://files.pythonhosted.org/packages/71/37/ae1f7c0fe867a903af1ccd9eaa933b6a09436ca02305c789bd689fb7fe29/zope.security-6.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/71/37/ae1f7c0fe867a903af1ccd9eaa933b6a09436ca02305c789bd689fb7fe29/zope.security-6.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/71/37/ae1f7c0fe867a903af1ccd9eaa933b6a09436ca02305c789bd689fb7fe29/zope.security-6.0.tar.gz.asc
+Version  : 6.1
+Release  : 70
+URL      : https://files.pythonhosted.org/packages/b5/c9/8f4d997d11047d10709f6352d48b7dfc82d4f39352523d9e80fd13a77981/zope.security-6.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/b5/c9/8f4d997d11047d10709f6352d48b7dfc82d4f39352523d9e80fd13a77981/zope.security-6.1.tar.gz
+Source1  : https://files.pythonhosted.org/packages/b5/c9/8f4d997d11047d10709f6352d48b7dfc82d4f39352523d9e80fd13a77981/zope.security-6.1.tar.gz.asc
 Summary  : Zope Security Framework
 Group    : Development/Tools
 License  : ZPL-2.1
@@ -91,10 +91,10 @@ python3 components for the pypi-zope.security package.
 
 
 %prep
-%setup -q -n zope.security-6.0
-cd %{_builddir}/zope.security-6.0
+%setup -q -n zope.security-6.1
+cd %{_builddir}/zope.security-6.1
 pushd ..
-cp -a zope.security-6.0 buildavx2
+cp -a zope.security-6.1 buildavx2
 popd
 
 %build
@@ -102,7 +102,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1673893552
+export SOURCE_DATE_EPOCH=1674057424
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
