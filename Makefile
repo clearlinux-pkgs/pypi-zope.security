@@ -1,5 +1,5 @@
 PKG_NAME := pypi-zope.security
-URL = https://files.pythonhosted.org/packages/b5/c9/8f4d997d11047d10709f6352d48b7dfc82d4f39352523d9e80fd13a77981/zope.security-6.1.tar.gz
+URL = https://files.pythonhosted.org/packages/19/63/ab9cf7529413330069c69d2338e077d418c75ab34554a7c62d333eb9d42d/zope.security-6.2.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
