@@ -5,7 +5,7 @@
 #
 Name     : pypi-zope.security
 Version  : 6.2
-Release  : 74
+Release  : 75
 URL      : https://files.pythonhosted.org/packages/19/63/ab9cf7529413330069c69d2338e077d418c75ab34554a7c62d333eb9d42d/zope.security-6.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/19/63/ab9cf7529413330069c69d2338e077d418c75ab34554a7c62d333eb9d42d/zope.security-6.2.tar.gz
 Summary  : Zope Security Framework
